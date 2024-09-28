@@ -5,28 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>McDonald's Order Controller</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>McDonald's Automated Cooking Bot Controller</h1>
-  
-  <div>
-    <button id="newNormalOrder">New Normal Order</button>
-    <button id="newVipOrder">New VIP Order</button>
-  </div>
+  <div class="container">
+    <h1>McDonald's Automated Cooking Bot Controller</h1>
 
-  <div>
-    <h2>Pending Orders</h2>
-    <ul id="pendingOrders"></ul>
-  </div>
+    <div>
+      <button id="newNormalOrder">New Normal Order</button>
+      <button id="newVipOrder">New VIP Order</button>
+    </div>
 
-  <div>
-    <h2>Completed Orders</h2>
-    <ul id="completedOrders"></ul>
-  </div>
+    <div class="section">
+      <h2>Pending Orders</h2>
+      <ul id="pendingOrders"></ul>
+    </div>
 
-  <div>
-    <button id="addBot">+ Bot</button>
-    <button id="removeBot">- Bot</button>
+    <div class="section">
+      <h2>Completed Orders</h2>
+      <ul id="completedOrders"></ul>
+    </div>
+
+    <div>
+      <button id="addBot">+ Bot</button>
+      <button id="removeBot">- Bot</button>
+    </div>
   </div>
 
   <script src="script.js"></script>

@@ -88,17 +88,26 @@ function addBot() {
 
 // Function to remove a bot, ensuring any order being processed is returned to the pending queue
 function removeBot() {
-  if (bots.length > 0) {
-    const bot = bots.pop(); // Remove the most recently added bot
-    
-    if (bot.currentOrder) {
-      bot.currentOrder.status = 'PENDING'; // Revert the processing order back to pending
-      pendingOrders.push(bot.currentOrder); // Add it back to the normal queue
-    }
+  if (bots.length === 0) {
+      // No bots to remove
+      alert("No bots to remove!");
+      return;
   }
-  
-  displayOrders(); // Re-render the order lists
+
+  // Remove the last bot in the list
+  let removedBot = bots.pop();
+
+  // If the removed bot is currently processing an order, put the order back to pending
+  if (removedBot.currentOrder) {
+      pendingOrders.push(removedBot.currentOrder);
+      removedBot.currentOrder = null;
+      updatePendingOrdersUI();
+  }
+
+  // Update UI to show the removed bot
+  updateBotUI();
 }
+
 
 // Event listeners for user actions (buttons)
 document.getElementById('newNormalOrder').addEventListener('click', () => addOrder(false)); // Add normal order

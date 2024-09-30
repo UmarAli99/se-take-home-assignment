@@ -48,3 +48,9 @@ No external libraries or dependencies are required. The project uses basic HTML,
    Fork the repository and clone it to your local machine.
    ```bash
    git clone https://github.com/yourusername/mcdonalds-order-controller.git
+
+2. **Run the Code**
+    cd se-take-home-assignment
+    Type "npx http-server"
+    Press Enter
+    Open your browser and navigate to http://localhost:8080

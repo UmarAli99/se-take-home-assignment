@@ -47,7 +47,7 @@ No external libraries or dependencies are required. The project uses basic HTML,
 1. **Clone the Repository**:
    Fork the repository and clone it to your local machine.
    ```bash
-   git clone https://github.com/yourusername/mcdonalds-order-controller.git
+   git clone https://github.com/UmarAli99/mcdonalds-order-controller.git
 
 2. **Run the Code**
     cd se-take-home-assignment

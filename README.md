@@ -54,3 +54,4 @@ No external libraries or dependencies are required. The project uses basic HTML,
     Type "npx http-server"
     Press Enter
     Open your browser and navigate to http://localhost:8080
+    Please use private IP Address for the best results    

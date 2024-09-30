@@ -84,30 +84,56 @@ function addBot() {
   };
   bots.push(bot); // Add the bot to the bot array
   processOrder(bot); // Start processing orders with the new bot
-}
-
-// Function to remove a bot, ensuring any order being processed is returned to the pending queue
-function removeBot() {
-  if (bots.length === 0) {
-      // No bots to remove
-      alert("No bots to remove!");
-      return;
-  }
-
-  // Remove the last bot in the list
-  let removedBot = bots.pop();
-
-  // If the removed bot is currently processing an order, put the order back to pending
-  if (removedBot.currentOrder) {
-      pendingOrders.push(removedBot.currentOrder);
-      removedBot.currentOrder = null;
-      updatePendingOrdersUI();
-  }
-
-  // Update UI to show the removed bot
   updateBotUI();
 }
 
+// Function to remove a bot, ensuring any order being processed is returned to the pending queue
+// Function to reverse the status of the last completed order
+function removeBot() {
+  if (completedOrders.length > 0) {
+    // Get the last completed order
+    let lastCompletedOrder = completedOrders.pop();
+    
+    // Reverse its status to 'PENDING'
+    lastCompletedOrder.status = 'PENDING';
+
+    // Add it back to the appropriate queue (VIP or Normal)
+    if (lastCompletedOrder.orderType === 'VIP') {
+      vipOrders.push(lastCompletedOrder); // VIP orders go back to the VIP queue
+    } else {
+      pendingOrders.push(lastCompletedOrder); // Normal orders go back to the normal queue
+    }
+
+    // Update the UI to reflect the changes
+    displayOrders();
+  } else {
+    alert("No completed orders to reverse!");
+  }
+}
+
+
+// Update the UI for pending orders
+function updatePendingOrdersUI() {
+  displayOrders(); // Re-renders the order lists
+}
+
+// Update the UI for bots
+function updateBotUI() {
+  // Update the bot count or status in the UI
+  document.getElementById('botCount').textContent = `Bots: ${bots.length}`;
+}
+
+
+// Update the UI for pending orders
+function updatePendingOrdersUI() {
+  displayOrders(); // Re-renders the order lists
+}
+
+// Update the UI for bots
+function updateBotUI() {
+  // Update the bot count or status in the UI
+  document.getElementById('botCount').textContent = `Bots: ${bots.length}`;
+}
 
 // Event listeners for user actions (buttons)
 document.getElementById('newNormalOrder').addEventListener('click', () => addOrder(false)); // Add normal order
